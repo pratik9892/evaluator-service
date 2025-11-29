@@ -2,7 +2,6 @@
   "name": "evaluater-service",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build": "npx tsc",
     "watch": "npx tsc -w",
@@ -22,11 +21,14 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@types/ioredis": "^4.28.10",
     "@typescript-eslint/eslint-plugin": "^8.48.0",
     "@typescript-eslint/parser": "^8.48.0",
+    "bullmq": "^5.65.0",
     "concurrently": "^9.2.1",
     "dotenv": "^17.2.3",
     "eslint": "^9.39.1",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "ioredis": "^5.8.2"
   }
 }

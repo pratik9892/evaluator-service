@@ -8,5 +8,7 @@ const redisConfig = {
 }
 
 const redisConnection = new Redis(redisConfig);
+console.log(redisConnection);
+
 
 export default redisConnection

@@ -1,7 +1,7 @@
 import sampleQueue from "../queues/sampleQueus";
 
-export default async function(name:string,payload:Record<string,unknown>){
+export default async function(name:string,payload:Record<string,unknown>,priority:number){
     console.log("Job Added to queue");
     
-    await sampleQueue.add(name,payload)
+    await sampleQueue.add(name,payload,{priority})
 }

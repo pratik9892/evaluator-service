@@ -1,4 +1,4 @@
-import express from "express"
+import express, { json, text, urlencoded } from "express"
 import serverConfig from "./config/serverConfig.js"
 import apiRouter from "./routes/index.js"
 import sampleQueueProducer from "./producers/sampleQueueProducer.js"
@@ -9,6 +9,9 @@ import { BullMQAdapter } from "@bull-board/api/bullMQAdapter"
 import sampleQueus from "./queues/sampleQueus.js"
 
 const app= express()
+app.use(urlencoded())
+app.use(json())
+app.use(text())
 const serverAdapter = new ExpressAdapter();
 serverAdapter.setBasePath('/admin/queues');
 
@@ -29,20 +32,4 @@ app.use("/api" , apiRouter)
 
 app.listen(serverConfig.PORT, () => {
     console.log(`Server is listening at ${serverConfig.PORT}`);
-
-    sampleWorker("SampleQueue");
-
-    sampleQueueProducer('SampleJob',{
-        name : "Pratik",
-        company : null,
-        position : "At Home",
-        location : "At Home"
-    }, 2 )
-
-    sampleQueueProducer('SampleJob',{
-        name : "Pratik Sawant",
-        company : "Amazon",
-        position : "Staff Engineer",
-        location : "USA"
-    }, 1 )
 })
